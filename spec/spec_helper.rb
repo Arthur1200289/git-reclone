@@ -1,4 +1,4 @@
-require_relative "../lib/open-remote.rb"
+require_relative "../lib/git-nuke.rb"
 
 require "codeclimate-test-reporter"
 CodeClimate::TestReporter.start

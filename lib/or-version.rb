@@ -1,6 +1,6 @@
 # universal version tracking
 
-class OpenRemote
+class GitNuke
   Version = "0.3.1"
 end
 

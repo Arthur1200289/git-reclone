@@ -2,17 +2,17 @@
 
 require "spec_helper"
 
-describe OpenRemote::Browser do
-  module OpenRemote::OS # spoof OS
+describe GitNuke::Browser do
+  module GitNuke::OS # spoof OS
     def os_name() "nix" end
   end
 
   def run(str)
-    OpenRemote::Browser.prepare(str)
+    GitNuke::Browser.prepare(str)
   end
 
   it "should have correct browser cmd" do
-    expect(OpenRemote::Browser.browser).to eq "xdg-open "
+    expect(GitNuke::Browser.browser).to eq "xdg-open "
   end
 
   # url: https://git.heroku.com/codepilot.git

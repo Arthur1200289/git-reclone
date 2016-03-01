@@ -1,13 +1,13 @@
 task :default  => :spec
 
-# Load open-remote files straight into ruby path
+# Load git-nuke files straight into ruby path
 lib = File.expand_path("../lib/", __FILE__)
 $:.unshift lib unless $:.include?(lib)
 
 # gem name, version
-g = "open-remote"
-require "open-remote"
-v = OpenRemote::Version
+g = "git-nuke"
+require "git-nuke"
+v = GitNuke::Version
 
 
 # Testing

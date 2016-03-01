@@ -1,6 +1,6 @@
 # Detect operating system
 #
-module OpenRemote::OS
+module GitNuke::OS
   def os_name
     if (/darwin/ =~ RUBY_PLATFORM) != nil
       "mac"
@@ -15,9 +15,9 @@ end
 
 # Web browser opening commands
 #
-module OpenRemote::Browser end
-class << OpenRemote::Browser
-  include OpenRemote::OS
+module GitNuke::Browser end
+class << GitNuke::Browser
+  include GitNuke::OS
 
   # Generate and open approprate website from ssh/git link
   #

@@ -1,14 +1,14 @@
-open-remote
+git-nuke
 ===========
 
 
-[![Gem Version](https://badge.fury.io/rb/open-remote.svg)](https://badge.fury.io/rb/open-remote)
-[![Build Status](https://travis-ci.org/jeremywrnr/open-remote.svg?branch=master)](https://travis-ci.org/jeremywrnr/open-remote)
-[![Code Climate](https://codeclimate.com/github/jeremywrnr/open-remote/badges/gpa.svg)](https://codeclimate.com/github/jeremywrnr/open-remote)
+[![Gem Version](https://badge.fury.io/rb/git-nuke.svg)](https://badge.fury.io/rb/git-nuke)
+[![Build Status](https://travis-ci.org/jeremywrnr/git-nuke.svg?branch=master)](https://travis-ci.org/jeremywrnr/git-nuke)
+[![Code Climate](https://codeclimate.com/github/jeremywrnr/git-nuke/badges/gpa.svg)](https://codeclimate.com/github/jeremywrnr/git-nuke)
 [![MIT](https://img.shields.io/npm/l/alt.svg?style=flat)](http://jeremywrnr.com/mit-license)
 
 
-open-remote - a simple git remote opening tool.
+git-nuke - a simple git remote opening tool.
 
 tested and works well for:
 
@@ -22,15 +22,15 @@ either let me know or make a pull request with the augmentation for that host.
 
 ## setup
 
-    [sudo] gem install open-remote
+    [sudo] gem install git-nuke
 
 making a git alias for 'git open' in your `.gitconfig`:
 
-    open-remote --alias
+    git-nuke --alias
 
 removing the alias, if you don't want it anymore:
 
-    open-remote --unalias
+    git-nuke --unalias
 
 
 ## usage
@@ -59,7 +59,7 @@ git remotes):
 
 ```
 [alias]
-    open-remote = "!open $(git remote -v $@ | grep -o 'http\\S*' | head -1); :"
+    git-nuke = "!open $(git remote -v $@ | grep -o 'http\\S*' | head -1); :"
 ```
 
 [cel]:https://github.com/clehner
@@ -69,5 +69,5 @@ git remotes):
 ## testing
 
     bundle || gem install bundler && bundle
-    rake # running open-remote's tests
+    rake # running git-nuke's tests
 

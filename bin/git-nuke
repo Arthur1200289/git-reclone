@@ -1,9 +1,9 @@
 #!/usr/bin/env ruby
 
-require "open-remote"
+require "git-nuke"
 
-# open-remote by jeremy warner
+# git-nuke by jeremy warner
 # easily open git repo remotes
 
-OpenRemote.new.run(ARGV)
+GitNuke.new.run(ARGV)
 

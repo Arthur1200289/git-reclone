@@ -1,11 +1,11 @@
-# open-remotes parsing and opening
+# git-nukes parsing and opening
 
 require "colored"
 require "or-version"
 require "or-browser"
 
-class OpenRemote
-  extend OpenRemote::Browser
+class GitNuke
+  extend GitNuke::Browser
 
   def run(args)
     arg = args.shift
@@ -15,13 +15,13 @@ class OpenRemote
       Browser.browse remote
 
     when "--help", "-h"
-      puts OpenRemote::Help
+      puts GitNuke::Help
 
     when "--version", "-v"
-      puts OpenRemote::Version
+      puts GitNuke::Version
 
     when "--alias"
-      system "git config --global alias.open '!open-remote'"
+      system "git config --global alias.open '!git-nuke'"
 
     when "--unalias"
       system "git config --global --unset alias.open"
@@ -61,8 +61,8 @@ end
 
 # large constant strings
 
-OpenRemote::Help = <<-HELP
-open-remote - git remote opening tool.
+GitNuke::Help = <<-HELP
+git-nuke - git remote opening tool.
 
 `git open` opens the first listed remote.
 

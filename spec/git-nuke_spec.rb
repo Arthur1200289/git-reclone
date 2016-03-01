@@ -1,13 +1,13 @@
-# unit testing for open-remote
+# unit testing for git-nuke
 
 require "spec_helper"
 
-describe OpenRemote do
+describe GitNuke do
   def run(str)
-    OpenRemote.new.run(str.split)
+    GitNuke.new.run(str.split)
   end
 
-  class OpenRemote
+  class GitNuke
     def remotes(*s)
       %w{https://github.com/user/repo.git
           git@bitbucket.org:<user>/repo.git
@@ -19,14 +19,14 @@ describe OpenRemote do
     end
   end
 
-  it "should show OpenRemote help" do
-    help = OpenRemote::Help
+  it "should show GitNuke help" do
+    help = GitNuke::Help
     expect(run "--help").to eq help
     expect(run "-h").to eq help
   end
 
-  it "should show OpenRemote version" do
-    vers = OpenRemote::Version
+  it "should show GitNuke version" do
+    vers = GitNuke::Version
     expect(run "--version").to eq vers
     expect(run "-v").to eq vers
   end
