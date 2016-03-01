@@ -1,0 +1,9 @@
+#!/usr/bin/env ruby
+
+require "open-remote"
+
+# open-remote by jeremy warner
+# easily open git repo remotes
+
+OpenRemote.new.run(ARGV)
+
