@@ -1,8 +1,7 @@
 # git-nukes parsing and opening
 
 require "colored"
-require "or-version"
-require "or-browser"
+require "git-nuke-version"
 
 class GitNuke
   extend GitNuke::Browser
@@ -62,9 +61,9 @@ end
 # large constant strings
 
 GitNuke::Help = <<-HELP
-git-nuke - git remote opening tool.
+git-nuke - git repo restoring tool.
 
-`git open` opens the first listed remote.
+`git nuke` re-clones from the first listed remote.
 
 to open a particular remote, specify the host:
 
