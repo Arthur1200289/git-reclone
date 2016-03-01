@@ -1,7 +1,7 @@
 lib = File.expand_path("../lib/", __FILE__)
 $:.unshift lib unless $:.include?(lib)
 
-require "or-version"
+require "git-nuke-version"
 
 Gem::Specification.new do |g|
   g.author      = "Jeremy Warner"
@@ -11,8 +11,8 @@ Gem::Specification.new do |g|
   g.version     = GitNuke::Version
   g.platform    = Gem::Platform::RUBY
   g.date        = Time.now.strftime("%Y-%m-%d")
-  g.summary     = "open a git repo's remote from your terminal (git open)."
-  g.description = "open a git repo's web remote from your terminal, with 'git open'."
+  g.summary     = "restore a corrupted local git repo to the remote's copy."
+  g.description = "destroy a corrupted local git repo, and reclone to the remote's copy."
   g.homepage    = "http://github.com/jeremywrnr/git-nuke"
   g.license     = "MIT"
 
@@ -20,9 +20,9 @@ Gem::Specification.new do |g|
   g.add_development_dependency "ronn"
   g.add_development_dependency "rake"
   g.add_development_dependency "rspec"
-  g.post_install_message = "Run 'git-nuke --alias' to add 'git open'"
+  g.post_install_message = "Run 'git-nuke --alias' to add 'git nuke'"
 
-  g.files        = Dir.glob("{bin,lib,man}/**/*") + %w(readme.md)
+  g.files        = Dir.glob("{bin,lib}/**/*") + %w(readme.md)
   g.executables  = Dir.glob("bin/*").map(&File.method(:basename))
   g.require_path = 'lib'
 end
