@@ -13,10 +13,6 @@ describe GitNuke do
           git@bitbucket.org:<user>/repo.git
           https://git.heroku.com/app.git}
     end
-
-    def Browser::open(url)
-      puts url
-    end
   end
 
   it "should show GitNuke help" do
