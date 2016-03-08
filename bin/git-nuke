@@ -3,7 +3,7 @@
 require "git-nuke"
 
 # git-nuke by jeremy warner
-# easily open git repo remotes
+# easily reset git repo from remotes
 
 GitNuke.new.run(ARGV)
 

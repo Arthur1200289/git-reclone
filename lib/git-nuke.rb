@@ -1,5 +1,14 @@
 # git-nukes parsing and opening
 
+=begin
+
+say git nuke (-f)
+verify the remote to clone from
+clean up the local repository
+clone the remote, overwriting
+
+=end
+
 require "colored"
 require "git-nuke-version"
 
@@ -20,10 +29,10 @@ class GitNuke
       puts GitNuke::Version
 
     when "--alias"
-      system "git config --global alias.open '!git-nuke'"
+      system "git config --global alias.nuke '!git-nuke'"
 
     when "--unalias"
-      system "git config --global --unset alias.open"
+      system "git config --global --unset alias.nuke"
 
     else # check against remotes
       Browser.browse remote(arg)
@@ -37,7 +46,7 @@ class GitNuke
 
   def remote(search = /.*/)
     if no_repo?
-      puts "Not currently in a git repository.".red
+      puts "Not currently in a git repository.".yellow
       exit 1
     end
 
@@ -63,16 +72,14 @@ end
 GitNuke::Help = <<-HELP
 git-nuke - git repo restoring tool.
 
-`git nuke` re-clones from the first listed remote.
+`git nuke` re-clones from the first listed remote, removing the local copy.
 
-to open a particular remote, specify the host:
+to restore from a particular remote repository, specify the host:
 
 `git open bit`,
 `git open bucket`,
 `git open bitbucket`,
-  will all open bitbucket remote in the browser.
-
-Tested against github, bitbucket, and heroku repos.
+  will all clone from a bitbucket remote.
 
 HELP
 
