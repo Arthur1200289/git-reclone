@@ -35,9 +35,9 @@ removing the alias, if you don't want it anymore:
 reclones from the first git remote. to clone a specific remote, specify some part (or
 all) of the host name. for example:
 
-    git clone bit
-    git clone bucket
-    git clone bitbucket
+    git nuke bit
+    git nuke bucket
+    git nuke bitbucket
 
 will all overwrite the current repository with bitbucket's remote.
 
