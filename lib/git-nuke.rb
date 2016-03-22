@@ -71,7 +71,7 @@ class GitNuke
   end
 
   def slowp(x)
-    sleep 0.03
+    sleep 0.01
     printf x
   end
 
@@ -109,10 +109,7 @@ class GitNuke
 
   # overwrite the local copy of the repository with the remote one
   def nuke(remote, root)
-    puts Dir.glob("*", File::FNM_DOTMATCH).select {|d| not ['.','..'].include? d }
-    return
-
-    #FileUtils.rmtree (Dir.glob("*", File::FNM_DOTMATCH).select {|d| not ['.','..'].include? d })
+    FileUtils.rmtree (Dir.glob("*", File::FNM_DOTMATCH).select {|d| not ['.','..'].include? d })
 
     cloner = "git clone #{remote} #{root}"
 
