@@ -19,6 +19,7 @@ class GitNuke
   def run(args)
     @opts = args.select { |a| a[0] == "-" }
     @args = args - @opts
+    @verify = true
 
     @opts.each { |o| parse_opt o }
     parse_arg @args.first
