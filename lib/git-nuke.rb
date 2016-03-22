@@ -46,12 +46,7 @@ class GitNuke
   end
 
   def parse_arg(a)
-    case a
-    when nil # open first remote
-      verify remote
-    else # check against remotes
-      verify remote(a)
-    end
+    a.nil?? verify(remote) : verify(remote(a))
   end
 
   def no_repo?
@@ -83,13 +78,13 @@ class GitNuke
 
   # show remote to user and confirm location (unless using -f)
   def verify(r)
-    puts "Readying the nuke...".green
-    puts "Local target: " << git_root
-    puts "Remote source: " << r
+    puts "Readying nuke...".red
+    puts "Remote source:\t".red << r
+    puts "Local target:\t".red << git_root
 
     if @verify
       puts "Warning: this will completely overwrite the local copy.".yellow
-      puts "Continue recloning local repo? [yN] "
+      printf "Continue recloning local repo? [yN] "
       return unless $stdin.gets.chomp.downcase[0] == "y"
     end
 
@@ -101,6 +96,8 @@ class GitNuke
     FileUtils.rm_rf root
 
     system "git clone", remote, root
+
+    puts "Recloned successfully.".green
   end
 end
 
