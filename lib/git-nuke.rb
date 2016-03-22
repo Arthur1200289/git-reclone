@@ -97,8 +97,10 @@ class GitNuke
   def nuke(remote, root)
     #not working for some reason :/, OS fix
     #FileUtils.rmtree root, :verbose => true
-    system "cd .. && rm -rf '#{root}'"
-    system "git clone", remote, root
+
+    cloner = "cd ../ && rm -rvf '#{root}' && git clone #{remote} #{root}"
+    system cloner
+
     puts "Recloned successfully.".green
   end
 end
