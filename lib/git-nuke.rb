@@ -119,9 +119,9 @@ git-nuke - git repo restoring tool.
 
 to restore from a particular remote repository, specify the host:
 
-`git open bit`,
-`git open bucket`,
-`git open bitbucket`,
+`git nuke bit`,
+`git nuke bucket`,
+`git nuke bitbucket`,
   will all clone from a bitbucket remote.
 
 HELP
