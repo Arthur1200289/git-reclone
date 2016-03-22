@@ -98,7 +98,8 @@ class GitNuke
     #not working for some reason :/, OS fix
     #FileUtils.rmtree root, :verbose => true
 
-    cloner = "cd ../ && rm -rvf '#{root}' && git clone #{remote} #{root}"
+    cloner = "cd ../ && rm -rf '#{root}' && git clone #{remote} #{root}"
+    puts cloner
     system cloner
 
     puts "Recloned successfully.".green
