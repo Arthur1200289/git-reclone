@@ -43,6 +43,8 @@ class GitNuke
     when "--unalias"
       system "git config --global --unset alias.nuke"
     end
+
+    exit 0 unless @verify
   end
 
   def parse_arg(a)
