@@ -80,7 +80,7 @@ class GitNuke
 
   # show remote to user and confirm location (unless using -f)
   def verify(r)
-    puts "READYING NUKE...".red
+    puts "|READYING NUKE|".red
     puts "Remote source:\t".red << r
     puts "Local target:\t".red << git_root
 
@@ -95,12 +95,12 @@ class GitNuke
 
   # overwrite the local copy of the repository with the remote one
   def nuke(remote, root)
-    #not working for some reason :/, OS fix
-    #FileUtils.rmtree root, :verbose => true
+    #working templated version, backed up
+    #cloner = "cd ../ && rm -rf '#{root}' && git clone #{remote} #{root}"
 
-    cloner = "cd ../ && rm -rf '#{root}' && git clone #{remote} #{root}"
-    puts cloner
-    system cloner
+    FileUtils.rmtree root, :verbose => true
+
+    system "git clone", remote, root
 
     puts "Recloned successfully.".green
   end
