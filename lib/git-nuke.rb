@@ -21,7 +21,7 @@ class GitNuke
     @args = args - @opts
 
     @opts.each { |o| parse_opt o }
-    @args.each { |a| parse_arg a }
+    parse_arg @args.first
   end
 
   def pexit(s)
