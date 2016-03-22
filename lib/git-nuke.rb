@@ -90,7 +90,7 @@ class GitNuke
       return unless $stdin.gets.chomp.downcase[0] == "y"
     end
 
-    nuke remote, git_root
+    nuke remote, git_root.chomp
   end
 
   # overwrite the local copy of the repository with the remote one
