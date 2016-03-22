@@ -44,7 +44,7 @@ class GitNuke
       system "git config --global --unset alias.nuke"
     end
 
-    exit 0 unless @verify
+    exit 0 if @verify
   end
 
   def parse_arg(a)
