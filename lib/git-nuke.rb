@@ -93,8 +93,8 @@ class GitNuke
 
   # overwrite the local copy of the repository with the remote one
   def nuke(remote, root)
+    Dir.chdir ".."
     FileUtils.rm_rf root, :verbose => true
-    return
 
     system "git clone", remote, root
 
