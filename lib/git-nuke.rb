@@ -95,7 +95,7 @@ class GitNuke
 
   # overwrite the local copy of the repository with the remote one
   def nuke(remote, root)
-    FileUtils.rmtree Dir.glob("#{root}/*")
+    FileUtils.rmtree (Dir.glob("#{root}/*", File::FNM_DOTMATCH).select {|d| not ['.','..'].include? d })
 
     cloner = "git clone #{remote} #{root}"
 
