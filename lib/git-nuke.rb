@@ -95,14 +95,12 @@ class GitNuke
 
   # overwrite the local copy of the repository with the remote one
   def nuke(remote, root)
-    #working templated version, backed up
-    #cloner = "cd ../ && rm -rf '#{root}' && git clone #{remote} #{root}"
+    #not working for some reason...
+    #FileUtils.rmtree root, :verbose => true
 
-    FileUtils.rmtree root, :verbose => true
+    cloner = "cd ../ && rm -rf '#{root}' && git clone #{remote} #{root}"
 
-    system "git clone", remote, root
-
-    puts "Recloned successfully.".green
+    system(cloner) && puts "Recloned successfully.".green
   end
 end
 
