@@ -7,6 +7,7 @@ verify the remote to clone from
 clean up the local repository
 clone the remote, overwriting
 todo: add an option to automatically add a backup of the local copy
+todo: add all remotes other than the origins, maintain connections
 -b / --backup, and this actually should be the default (maybe)
 
 =end
