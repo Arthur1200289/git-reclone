@@ -87,7 +87,10 @@ class GitNuke
     if @verify
       puts "Warning: this will completely overwrite the local copy.".yellow
       printf "Continue recloning local repo? [yN] ".yellow
-      return unless $stdin.gets.chomp.downcase[0] == "y"
+      unless $stdin.gets.chomp.downcase[0] == "y"
+        puts "Nuke aborted.".green
+        return
+      end
     end
 
     nuke remote, git_root.chomp
@@ -95,7 +98,10 @@ class GitNuke
 
   # overwrite the local copy of the repository with the remote one
   def nuke(remote, root)
-    FileUtils.rmtree (Dir.glob("#{root}/*", File::FNM_DOTMATCH).select {|d| not ['.','..'].include? d })
+    puts Dir.glob("*", File::FNM_DOTMATCH).select {|d| not ['.','..'].include? d }
+    return
+
+    #FileUtils.rmtree (Dir.glob("*", File::FNM_DOTMATCH).select {|d| not ['.','..'].include? d })
 
     cloner = "git clone #{remote} #{root}"
 
