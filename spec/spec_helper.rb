@@ -1,4 +1,4 @@
-require_relative "../lib/git-nuke.rb"
+require "git-nuke.rb"
 
 # testing sys output
 def puts(*x) x.join end
