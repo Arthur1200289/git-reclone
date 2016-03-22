@@ -64,6 +64,17 @@ class GitNuke
     %x{git remote -v}.split("\n").map { |r| r.split[1] }.uniq
   end
 
+  def nukebanner
+    25.times { |x| slowp "\rREADYING NUKE| ".red << "*" * x << "#==>".red }
+    25.times { |x| slowp "\rREADYING NUKE| ".red << " " * x << "*" * (25 - x) << "#==>".yellow }
+    printf "\rNUKE READY.".red << " " * 50 << "\n"
+  end
+
+  def slowp(x)
+    sleep 0.03
+    printf x
+  end
+
   # trying to parse out which remote should be the new source
   def remote(search = /.*/)
     pexit "Not currently in a git repository.".yellow if no_repo?
@@ -80,7 +91,7 @@ class GitNuke
 
   # show remote to user and confirm location (unless using -f)
   def verify(r)
-    puts "|READYING NUKE|".red
+    nukebanner
     puts "Remote source:\t".red << r
     puts "Local target:\t".red << git_root
 
