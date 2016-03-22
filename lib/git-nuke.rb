@@ -78,13 +78,13 @@ class GitNuke
 
   # show remote to user and confirm location (unless using -f)
   def verify(r)
-    puts "Readying nuke...".red
+    puts "READYING NUKE...".red
     puts "Remote source:\t".red << r
     puts "Local target:\t".red << git_root
 
     if @verify
       puts "Warning: this will completely overwrite the local copy.".yellow
-      printf "Continue recloning local repo? [yN] "
+      printf "Continue recloning local repo? [yN] ".yellow
       return unless $stdin.gets.chomp.downcase[0] == "y"
     end
 
@@ -93,6 +93,9 @@ class GitNuke
 
   # overwrite the local copy of the repository with the remote one
   def nuke(remote, root)
+    puts root
+    return
+
     FileUtils.rm_rf root
 
     system "git clone", remote, root
