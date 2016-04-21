@@ -10,7 +10,7 @@ git-nuke
 
 git-nuke - nuke your local copy of a git repo, and reclone it from your remote.
 
-[[https://github.com/username/repository/blob/master/img/octocat.png|alt=octocat]]
+![Screencast](http://i.imgur.com/HIvZCJB.gif)
 
 tested and works well for:
 
