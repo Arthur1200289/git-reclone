@@ -3,9 +3,10 @@ require "git-nuke.rb"
 # testing sys output
 def puts(*x) x.join end
 
-
 # mocking remotes/deletes
 class GitNuke
+  @verify = false
+
   def pexit(*s)
     puts s
   end
@@ -22,3 +23,4 @@ class GitNuke
     puts s
   end
 end
+
