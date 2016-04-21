@@ -7,14 +7,6 @@ describe GitNuke do
     GitNuke.new.run(str.split)
   end
 
-  class GitNuke
-    def remotes(*s)
-      %w{https://github.com/user/repo.git
-          git@bitbucket.org:<user>/repo.git
-          https://git.heroku.com/app.git}
-    end
-  end
-
   it "should show GitNuke help" do
     help = GitNuke::Help
     expect(run "--help").to eq help
