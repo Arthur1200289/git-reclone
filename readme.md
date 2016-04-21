@@ -10,6 +10,8 @@ git-nuke
 
 git-nuke - nuke your local copy of a git repo, and reclone it from your remote.
 
+[[https://github.com/username/repository/blob/master/img/octocat.png|alt=octocat]]
+
 tested and works well for:
 
     - github
@@ -39,7 +41,8 @@ all) of the host name. for example:
     git nuke bucket
     git nuke bitbucket
 
-will all overwrite the current repository with bitbucket's remote.
+will all overwrite the current repository with bitbucket's remote (assuming
+that some other host/repo name doesn't also match 'bitbucket').
 
 
 ## about
