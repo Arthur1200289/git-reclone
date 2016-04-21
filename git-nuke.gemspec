@@ -17,9 +17,9 @@ Gem::Specification.new do |g|
   g.license     = "MIT"
 
   g.add_dependency "colored", ">= 1.2", "~> 1.2"
-  g.add_development_dependency "ronn", '~> 0'
-  g.add_development_dependency "rake", '~> 0'
-  g.add_development_dependency "rspec", '~> 0'
+  g.add_development_dependency "ronn"
+  g.add_development_dependency "rake"
+  g.add_development_dependency "rspec"
   g.post_install_message = "Run 'git-nuke --alias' to add 'git nuke'"
 
   g.files        = Dir.glob("{bin,lib}/**/*") + %w(readme.md)
