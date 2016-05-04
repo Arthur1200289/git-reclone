@@ -1,5 +1,5 @@
-git-nuke
-========
+:rocket: git-nuke
+=================
 
 
 [![Gem Version](https://badge.fury.io/rb/git-nuke.svg)](https://badge.fury.io/rb/git-nuke)
@@ -8,7 +8,7 @@ git-nuke
 [![MIT](https://img.shields.io/npm/l/alt.svg?style=flat)](http://jeremywrnr.com/mit-license)
 
 
-git-nuke - nuke your local copy of a git repo, and reclone it from your remote.
+`git-nuke` - nuke your local copy of a git repo, and reclone it from your remote.
 
 ![Screencast](http://i.imgur.com/HIvZCJB.gif)
 
@@ -34,8 +34,8 @@ removing the alias, if you don't want it anymore:
 
     git nuke
 
-reclones from the first git remote. to clone a specific remote, specify some part (or
-all) of the host name. for example:
+reclones from the first git remote. to clone a specific remote, specify some
+part (or all) of the host name. for example:
 
     git nuke bit
     git nuke bucket
