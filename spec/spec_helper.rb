@@ -1,12 +1,10 @@
 require "git-nuke.rb"
 
-# testing sys output
+# testing system output
 def puts(*x) x.join end
 
-# mocking remotes/deletes
+# mock remotes/deletes
 class GitNuke
-  @verify = false
-
   def pexit(*s)
     puts s
   end
@@ -14,7 +12,7 @@ class GitNuke
   def remotes(*s)
     %w{
       https://github.com/user/repo.git
-      git@bitbucket.org:<user>/repo.git
+      git@bitbucket.org:user/repo.git
       https://git.heroku.com/app.git
     }
   end

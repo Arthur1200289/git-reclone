@@ -4,7 +4,7 @@ require "spec_helper"
 
 describe GitNuke do
   def run(str)
-    GitNuke.new.run(str.split)
+    GitNuke.new(%w{--test} + str.split)
   end
 
   it "should show GitNuke help" do

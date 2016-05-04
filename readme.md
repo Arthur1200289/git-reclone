@@ -1,11 +1,11 @@
-:rocket: git-nuke
+git-nuke :rocket:
 =================
 
 
+[![MIT](https://img.shields.io/npm/l/alt.svg?style=flat)](http://jeremywrnr.com/mit-license)
 [![Gem Version](https://badge.fury.io/rb/git-nuke.svg)](https://badge.fury.io/rb/git-nuke)
 [![Build Status](https://travis-ci.org/jeremywrnr/git-nuke.svg?branch=master)](https://travis-ci.org/jeremywrnr/git-nuke)
 [![Code Climate](https://codeclimate.com/github/jeremywrnr/git-nuke/badges/gpa.svg)](https://codeclimate.com/github/jeremywrnr/git-nuke)
-[![MIT](https://img.shields.io/npm/l/alt.svg?style=flat)](http://jeremywrnr.com/mit-license)
 
 
 `git-nuke` - nuke your local copy of a git repo, and reclone it from your remote.

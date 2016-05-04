@@ -5,5 +5,5 @@ require "git-nuke"
 # git-nuke by jeremy warner
 # easily reset git repo from remotes
 
-GitNuke.new.run(ARGV)
+GitNuke.new(ARGV)
 

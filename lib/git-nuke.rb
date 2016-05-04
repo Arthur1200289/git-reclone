@@ -17,12 +17,14 @@ require "fileutils"
 require "git-nuke-version"
 
 class GitNuke
-  def run(args)
+  def initialize(args)
     @opts = args.select { |a| a[0] == "-" }
     @args = args - @opts
     @verify = true
 
-    @opts.each { |o| parse_opt o }
+    puts @args
+    @opts.map { |o| parse_opt o }
+    return if @testing
     parse_arg @args.first
   end
 
@@ -35,6 +37,8 @@ class GitNuke
     case o
     when "--force", "-f"
       @verify = false
+    when "--test"
+      @testing = true
     when "--help", "-h"
       puts GitNuke::Help
     when "--version", "-v"
