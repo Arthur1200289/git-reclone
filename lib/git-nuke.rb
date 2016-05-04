@@ -1,15 +1,10 @@
-# git-nukes parsing and opening
+# git-nuke gem
+# jeremy warner
 
 =begin
-
-say git nuke (-f)
-verify the remote to clone from
-clean up the local repository
-clone the remote, overwriting
 todo: add an option to automatically add a backup of the local copy
 todo: add all remotes other than the origins, maintain connections
 -b / --backup, and this actually should be the default (maybe)
-
 =end
 
 require "colored"
@@ -17,19 +12,20 @@ require "fileutils"
 require "git-nuke-version"
 
 class GitNuke
-  def initialize(args)
-    @opts = args.select { |a| a[0] == "-" }
-    @args = args - @opts
-    @verify = true
-
-    puts @args
-    @opts.map { |o| parse_opt o }
-    return if @testing
-    parse_arg @args.first
+  def initialize(test=false)
+    @testing = test
+    @verify = !test
   end
 
-  def pexit(s)
-    puts s
+  def fire(args = [])
+    opts = args.select {|a| a[0] == "-" }
+    opts.each {|o| parse_opt o }
+    exit 0 if !(@testing || opts.first)
+    parse_arg((args - opts).first)
+  end
+
+  def pexit(msg)
+    puts msg
     exit 1
   end
 
@@ -37,8 +33,6 @@ class GitNuke
     case o
     when "--force", "-f"
       @verify = false
-    when "--test"
-      @testing = true
     when "--help", "-h"
       puts GitNuke::Help
     when "--version", "-v"
@@ -48,11 +42,10 @@ class GitNuke
     when "--unalias"
       system "git config --global --unset alias.nuke"
     end
-
-    exit 0 if @verify
   end
 
   def parse_arg(a)
+    puts verify(remote)
     a.nil?? verify(remote) : verify(remote(a))
   end
 
@@ -109,33 +102,17 @@ class GitNuke
       end
     end
 
-    nuke remote, git_root.chomp
+    nuke remote, git_root.chomp unless @testing
   end
 
   # overwrite the local copy of the repository with the remote one
   def nuke(remote, root)
-    FileUtils.rmtree (Dir.glob("*", File::FNM_DOTMATCH).select {|d| not ['.','..'].include? d })
+    FileUtils.rmtree( # remove the git repo from this computer
+      Dir.glob("*", File::FNM_DOTMATCH).select {|d| not ['.','..'].include? d })
 
     cloner = "git clone #{remote} #{root}"
 
     puts "Recloned successfully.".green if system(cloner)
   end
 end
-
-
-# large constant strings
-
-GitNuke::Help = <<-HELP
-git-nuke - git repo restoring tool.
-
-`git nuke` re-clones from the first listed remote, removing the local copy.
-
-to restore from a particular remote repository, specify the host:
-
-`git nuke bit`,
-`git nuke bucket`,
-`git nuke bitbucket`,
-  will all clone from a bitbucket remote.
-
-HELP
 

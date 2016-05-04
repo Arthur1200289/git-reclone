@@ -1,24 +1,20 @@
-require "git-nuke.rb"
+require "git-nuke"
 
-# testing system output
-def puts(*x) x.join end
+# mock remotes/puts
 
-# mock remotes/deletes
 class GitNuke
-  def pexit(*s)
-    puts s
+  def printf(*x) end
+  def slowp(x) end
+  def puts(*x)
+    return x.first
   end
 
-  def remotes(*s)
+  def remotes
     %w{
       https://github.com/user/repo.git
-      git@bitbucket.org:user/repo.git
       https://git.heroku.com/app.git
+      git@bitbucket.org:user/repo.git
     }
-  end
-
-  def nuke(*s)
-    puts s
   end
 end
 

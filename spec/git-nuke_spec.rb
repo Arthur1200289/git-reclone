@@ -1,32 +1,30 @@
-# unit testing for git-nuke
+# git-nuke unit testing
 
 require "spec_helper"
 
 describe GitNuke do
-  def run(str)
-    GitNuke.new(%w{--test} + str.split)
+  before :each do
+    @gn = GitNuke.new(true) # testing
+  end
+
+  it "should exit without args" do
+    expect(@gn.fire).to eq nil
   end
 
   it "should show GitNuke help" do
-    help = GitNuke::Help
-    expect(run "--help").to eq help
-    expect(run "-h").to eq help
+    expect(@gn.parse_opt("--help")).to eq GitNuke::Help
+    expect(@gn.parse_opt("-h")).to eq GitNuke::Help
   end
 
   it "should show GitNuke version" do
-    vers = GitNuke::Version
-    expect(run "--version").to eq vers
-    expect(run "-v").to eq vers
+    expect(@gn.parse_opt("--version")).to eq GitNuke::Version
+    expect(@gn.parse_opt("-v")).to eq GitNuke::Version
   end
 
-  it "should not crash with no args" do
-    run ""
-  end
-
-  it "should not crash with args" do
-    run "bitbucket"
-    run "github"
-    run "heroku"
+  it "should find the correct remote" do
+    expect(@gn.remote %{bitbucket}).to eq 'git@bitbucket.org:user/repo.git'
+    expect(@gn.remote %{github}).to eq 'https://github.com/user/repo.git'
+    expect(@gn.remote %{heroku}).to eq 'https://git.heroku.com/app.git'
   end
 end
 
