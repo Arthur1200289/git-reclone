@@ -19,28 +19,15 @@ class GitNuke
   end
 
   def fire(args = [])
-    puts args
-    exit 0 if test_empty(args)
     opts = args.select {|a| a[0] == "-" }
     opts.each {|o| parse_opt o }
-    exit 0 if !(@testing || opts.first)
+    exit 0 if (@testing || opts.first)
     parse_arg((args - opts).first)
   end
 
   def pexit(msg)
     puts msg
     exit 1
-  end
-
-  # check to see whether any arguments were given to the fire command
-  # if not, then show the help and exit without continuing through
-  def test_empty(args)
-    if args.length > 0
-      return false
-    else
-      puts GitNuke::Help
-      return true
-    end
   end
 
   def parse_opt(o)
