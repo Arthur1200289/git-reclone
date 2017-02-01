@@ -5,7 +5,7 @@ require "git-nuke-version"
 
 Gem::Specification.new do |g|
   g.author      = "Jeremy Warner"
-  g.email       = "jeremywrnr@gmail.com"
+  g.email       = "jeremy.warner@berkeley.edu"
 
   g.name        = "git-nuke"
   g.version     = GitNuke::Version
@@ -20,7 +20,6 @@ Gem::Specification.new do |g|
   g.add_development_dependency "ronn"
   g.add_development_dependency "rake"
   g.add_development_dependency "rspec"
-  g.post_install_message = "Run 'git-nuke --alias' to add 'git nuke'"
 
   g.files        = Dir.glob("{bin,lib}/**/*") + %w(readme.md)
   g.executables  = Dir.glob("bin/*").map(&File.method(:basename))
