@@ -42,7 +42,6 @@ class GitNuke
   end
 
   def parse_arg(a)
-    puts verify(remote)
     a.nil?? verify(remote) : verify(remote(a))
   end
 
@@ -60,8 +59,8 @@ class GitNuke
   end
 
   def nukebanner
-    25.times { |x| slowp "\rREADYING NUKE| ".red << "*" * x << "#==>".red }
-    25.times { |x| slowp "\rREADYING NUKE| ".red << " " * x << "*" * (25 - x) << "#==>".yellow }
+    25.times { |x| slowp "\rREADYING NUKE| ".red << "~" * x << "#==>".red }
+    25.times { |x| slowp "\rREADYING NUKE| ".red << " " * x << "~" * (25 - x) << "#==>".yellow }
     printf "\rNUKE READY.".red << " " * 50 << "\n"
   end
 
@@ -74,14 +73,17 @@ class GitNuke
   def remote(search = /.*/)
     pexit "Not currently in a git repository.".yellow if no_repo?
 
-    remote = remotes.find { |remote| remote.match search }
+    r = remotes.find { |gr| gr.match search }
 
     pexit "No remotes found in this repository.".yellow if remotes.nil?
 
-    pexit "No remotes found that match #{search.to_s.red}. All remotes:\n" +
-      remotes.join("\n") if remote.nil?
-
-    return remote
+    if r.nil?
+      errmsg = "No remotes found that match #{search.to_s.red}. All remotes:\n" + remotes.join("\n")
+      pexit errmsg
+      return errmsg
+    else
+      return r
+    end
   end
 
   # show remote to user and confirm location (unless using -f)

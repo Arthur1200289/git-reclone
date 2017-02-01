@@ -3,16 +3,11 @@ require "git-nuke"
 # mock remotes/puts
 
 class GitNuke
-  def printf(*x) end
-
+  def exit(x) end
   def slowp(*x) end
-
+  def printf(*x) end
   def puts(*x)
     return x.first
-  end
-
-  def exit(*x)
-    return puts x
   end
 
   def remotes

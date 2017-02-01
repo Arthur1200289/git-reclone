@@ -7,7 +7,7 @@ describe GitNuke do
     @gn = GitNuke.new(true) # testing
   end
 
-  it "should exit and show help without args" do
+  it "should exit without args" do
     expect(@gn.fire).to eq nil
   end
 
@@ -25,6 +25,11 @@ describe GitNuke do
     expect(@gn.remote %{bitbucket}).to eq 'git@bitbucket.org:user/repo.git'
     expect(@gn.remote %{github}).to eq 'https://github.com/user/repo.git'
     expect(@gn.remote %{heroku}).to eq 'https://git.heroku.com/app.git'
+  end
+
+  it "should show all when fake remote given" do
+    no_remote_err = "No remotes found that match \e[31mfake\e[0m. All remotes:\n" + @gn.remotes.join("\n")
+    expect(@gn.remote 'fake').to eq no_remote_err
   end
 end
 
