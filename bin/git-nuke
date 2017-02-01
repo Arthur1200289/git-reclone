@@ -6,4 +6,3 @@ require "git-nuke"
 # easily reset git repo from remotes
 
 GitNuke.new.fire ARGV
-

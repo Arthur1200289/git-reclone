@@ -13,6 +13,7 @@ require "git-nuke-version"
 
 class GitNuke
   def initialize(test=false)
+    @pdelay = 0.01 # constant for arrow speed
     @testing = test
     @verify = !test
   end
@@ -37,10 +38,6 @@ class GitNuke
       puts GitNuke::Help
     when "--version", "-v"
       puts GitNuke::Version
-    when "--alias"
-      system "git config --global alias.nuke '!git-nuke'"
-    when "--unalias"
-      system "git config --global --unset alias.nuke"
     end
   end
 
@@ -69,7 +66,7 @@ class GitNuke
   end
 
   def slowp(x)
-    sleep 0.01
+    sleep @pdelay
     printf x
   end
 

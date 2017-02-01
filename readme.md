@@ -8,7 +8,7 @@ git-nuke :rocket:
 [![Code Climate](https://codeclimate.com/github/jeremywrnr/git-nuke/badges/gpa.svg)](https://codeclimate.com/github/jeremywrnr/git-nuke)
 
 
-`git-nuke` - nuke your local copy of a git repo, and reclone it from your remote.
+nuke your local copy of a git repo, and reclone it from your remote.
 
 ![Screencast](http://i.imgur.com/HIvZCJB.gif)
 
@@ -21,13 +21,7 @@ tested and works well for:
 
     [sudo] gem install git-nuke
 
-making a git alias for 'git nuke' in your `.gitconfig`:
-
-    git-nuke --alias
-
-removing the alias, if you don't want it anymore:
-
-    git-nuke --unalias
+This will enable the `git nuke` command automatically!
 
 
 ## usage
