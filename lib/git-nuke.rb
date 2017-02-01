@@ -19,6 +19,7 @@ class GitNuke
   end
 
   def fire(args = [])
+    puts args
     exit 0 if test_empty(args)
     opts = args.select {|a| a[0] == "-" }
     opts.each {|o| parse_opt o }
@@ -34,7 +35,7 @@ class GitNuke
   # check to see whether any arguments were given to the fire command
   # if not, then show the help and exit without continuing through
   def test_empty(args)
-    if args.length > 1
+    if args.length > 0
       return false
     else
       puts GitNuke::Help
