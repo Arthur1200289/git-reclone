@@ -4,7 +4,7 @@
 =begin
 todo: add an option to automatically add a backup of the local copy
 todo: add all remotes other than the origins, maintain connections
--b / --backup, and this actually should be the default (maybe)
+todo: -b / --backup, and this actually should be the default (maybe)
 =end
 
 require "colored"
@@ -19,6 +19,7 @@ class GitNuke
   end
 
   def fire(args = [])
+    exit 0 if test_empty(args)
     opts = args.select {|a| a[0] == "-" }
     opts.each {|o| parse_opt o }
     exit 0 if !(@testing || opts.first)
@@ -28,6 +29,17 @@ class GitNuke
   def pexit(msg)
     puts msg
     exit 1
+  end
+
+  # check to see whether any arguments were given to the fire command
+  # if not, then show the help and exit without continuing through
+  def test_empty(args)
+    if args.length > 1
+      return false
+    else
+      puts GitNuke::Help
+      return true
+    end
   end
 
   def parse_opt(o)
@@ -104,8 +116,9 @@ class GitNuke
 
   # overwrite the local copy of the repository with the remote one
   def nuke(remote, root)
-    FileUtils.rmtree( # remove the git repo from this computer
-      Dir.glob("*", File::FNM_DOTMATCH).select {|d| not ['.','..'].include? d })
+    # remove the git repo from this computer
+    FileUtils.rmtree (Dir.glob("*", File::FNM_DOTMATCH).
+                      select {|d| not ['.','..'].include? d })
 
     cloner = "git clone #{remote} #{root}"
 

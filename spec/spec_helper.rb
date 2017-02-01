@@ -4,9 +4,15 @@ require "git-nuke"
 
 class GitNuke
   def printf(*x) end
-  def slowp(x) end
+
+  def slowp(*x) end
+
   def puts(*x)
     return x.first
+  end
+
+  def exit(*x)
+    return puts x
   end
 
   def remotes

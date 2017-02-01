@@ -7,7 +7,7 @@ describe GitNuke do
     @gn = GitNuke.new(true) # testing
   end
 
-  it "should exit without args" do
+  it "should exit and show help without args" do
     expect(@gn.fire).to eq nil
   end
 
