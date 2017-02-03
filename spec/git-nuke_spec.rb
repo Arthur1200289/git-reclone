@@ -27,7 +27,7 @@ describe GitNuke do
     expect(@gn.remote %{heroku}).to eq 'https://git.heroku.com/app.git'
   end
 
-  it "should show all when fake remote given" do
+  it "should show all remotes after finding no match" do
     no_remote_err = "No remotes found that match \e[31mfake\e[0m. All remotes:\n" + @gn.remotes.join("\n")
     expect(@gn.remote 'fake').to eq no_remote_err
   end
