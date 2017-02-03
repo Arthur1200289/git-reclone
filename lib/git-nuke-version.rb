@@ -3,7 +3,7 @@
 require "colored"
 
 class GitNuke
-  Version = "0.2.1"
+  Version = "0.2.2"
 end
 
 GitNuke::Help = <<-HELP
