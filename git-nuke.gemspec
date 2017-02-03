@@ -12,7 +12,7 @@ Gem::Specification.new do |g|
   g.platform    = Gem::Platform::RUBY
   g.date        = Time.now.strftime("%Y-%m-%d")
   g.summary     = "restore a corrupted local git repo to the remote's copy."
-  g.description = "destroy a corrupted local git repo, and reclone to the remote's copy."
+  g.description = "restore a corrupted local git repo to the remote's copy."
   g.homepage    = "http://github.com/jeremywrnr/git-nuke"
   g.license     = "MIT"
 
