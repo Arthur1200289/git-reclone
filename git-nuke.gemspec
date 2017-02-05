@@ -25,4 +25,3 @@ Gem::Specification.new do |g|
   g.executables  = Dir.glob("bin/*").map(&File.method(:basename))
   g.require_path = 'lib'
 end
-
