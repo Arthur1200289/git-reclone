@@ -1,6 +1,6 @@
-# git-nuke unit testing
-
 require "spec_helper"
+
+# git-nuke unit testing
 
 describe GitNuke do
   before :each do
@@ -30,6 +30,16 @@ describe GitNuke do
   it "should show all remotes after finding no match" do
     no_remote_err = "No remotes found that match \e[31mfake\e[0m. All remotes:\n" + @gn.remotes.join("\n")
     expect(@gn.remote 'fake').to eq no_remote_err
+  end
+
+  it "should handle pathnames with spaces" do
+    remote = "https://github.com/jeremywrnr/git-nuke.git"
+    gn_test_dir = "../test dir " + Time.now.to_s
+    begin
+      expect(@gn.nuke remote, gn_test_dir).to eq "\e[32mRecloned successfully.\e[0m"
+    ensure
+      FileUtils.rm_rf(gn_test_dir)
+    end
   end
 end
 

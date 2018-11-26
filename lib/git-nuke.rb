@@ -107,10 +107,12 @@ class GitNuke
   # overwrite the local copy of the repository with the remote one
   def nuke(remote, root)
     # remove the git repo from this computer
-    FileUtils.rmtree (Dir.glob("*", File::FNM_DOTMATCH).
-                      select {|d| not ['.','..'].include? d })
+    if !@testing
+      tree = Dir.glob("*", File::FNM_DOTMATCH).select {|d| not ['.','..'].include? d }
+      FileUtils.rmtree (tree)
+    end
 
-    cloner = "git clone #{remote} #{root}"
+    cloner = "git clone \"#{remote}\" \"#{root}\""
 
     puts "Recloned successfully.".green if system(cloner)
   end

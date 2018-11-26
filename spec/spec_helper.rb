@@ -1,4 +1,5 @@
 require "git-nuke"
+require 'fileutils'
 
 # mock remotes/puts
 
