@@ -53,3 +53,5 @@ local copy and start anew - after all, what are backups meant for?
     bundle || gem install bundler && bundle
     rake # running git-reclone's tests
 
+todo: git nuke should work from any subfolder of the repo (not just git.root)
+
