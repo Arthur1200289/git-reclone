@@ -3,7 +3,7 @@ git-reclone :rocket:
 
 
 [![MIT](https://img.shields.io/npm/l/alt.svg?style=flat)](http://jeremywrnr.com/mit-license)
--[![Gem Version](https://badge.fury.io/rb/git-reclone.svg)](https://badge.fury.io/rb/git-reclone)
+[![Gem Version](https://badge.fury.io/rb/git-reclone.svg)](https://badge.fury.io/rb/git-reclone)
 [![Build Status](https://travis-ci.org/jeremywrnr/git-reclone.svg?branch=master)](https://travis-ci.org/jeremywrnr/git-reclone)
 [![Code Climate](https://codeclimate.com/github/jeremywrnr/git-reclone/badges/gpa.svg)](https://codeclimate.com/github/jeremywrnr/git-reclone)
 
