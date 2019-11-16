@@ -1,0 +1,8 @@
+#!/usr/bin/env ruby
+
+require "git-reclone"
+
+# git-reclone by jeremy warner
+# easily reset git repo from remotes
+
+GitReclone.new.fire ARGV

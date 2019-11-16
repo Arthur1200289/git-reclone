@@ -1,5 +1,5 @@
 # universal version tracking
 
-class GitNuke
+class GitReclone
   Version = "0.2.3"
 end

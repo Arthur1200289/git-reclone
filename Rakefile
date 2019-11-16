@@ -1,13 +1,13 @@
 task :default  => :spec
 
-# Load git-nuke files straight into ruby path
+# Load git-reclone files straight into ruby path
 lib = File.expand_path("../lib/", __FILE__)
 $:.unshift lib unless $:.include?(lib)
 
 # gem name, version
-g = "git-nuke"
-require "git-nuke"
-v = GitNuke::Version
+g = "git-reclone"
+require "git-reclone"
+v = GitReclone::Version
 
 
 # Testing

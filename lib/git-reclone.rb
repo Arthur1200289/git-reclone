@@ -1,4 +1,4 @@
-# git-nuke gem
+# git-reclone gem
 # jeremy warner
 
 =begin
@@ -9,9 +9,9 @@ todo: -b / --backup, and this actually should be the default (maybe)
 
 require "colored"
 require "fileutils"
-require "git-nuke-version"
+require "git-reclone-version"
 
-class GitNuke
+class GitReclone
   def initialize(test=false)
     @pdelay = 0.01 # constant for arrow speed
     @testing = test
@@ -35,9 +35,9 @@ class GitNuke
     when "--force", "-f"
       @verify = false
     when "--help", "-h"
-      puts GitNuke::Help
+      puts GitReclone::Help
     when "--version", "-v"
-      puts GitNuke::Version
+      puts GitReclone::Version
     end
   end
 
@@ -58,10 +58,10 @@ class GitNuke
     %x{git remote -v}.split("\n").map { |r| r.split[1] }.uniq
   end
 
-  def nukebanner
-    25.times { |x| slowp "\rREADYING NUKE| ".red << "~" * x << "#==>".red }
-    25.times { |x| slowp "\rREADYING NUKE| ".red << " " * x << "~" * (25 - x) << "#==>".yellow }
-    printf "\rNUKE READY.".red << " " * 50 << "\n"
+  def reclonebanner
+    25.times { |x| slowp "\rpreparing| ".red << "~" * x << "#==>".red }
+    25.times { |x| slowp "\rpreparing| ".red << " " * x << "~" * (25 - x) << "#==>".yellow }
+    printf "\rREADY.".red << " " * 50 << "\n"
   end
 
   def slowp(x)
@@ -88,7 +88,7 @@ class GitNuke
 
   # show remote to user and confirm location (unless using -f)
   def verify(r)
-    nukebanner
+    reclonebanner
     puts "Remote source:\t".red << r
     puts "Local target:\t".red << git_root
 
@@ -96,16 +96,16 @@ class GitNuke
       puts "Warning: this will completely overwrite the local copy.".yellow
       printf "Continue recloning local repo? [yN] ".yellow
       unless $stdin.gets.chomp.downcase[0] == "y"
-        puts "Nuke aborted.".green
+        puts "Reclone aborted.".green
         return
       end
     end
 
-    nuke remote, git_root.chomp unless @testing
+    reclone remote, git_root.chomp unless @testing
   end
 
   # overwrite the local copy of the repository with the remote one
-  def nuke(remote, root)
+  def reclone(remote, root)
     # remove the git repo from this computer
     if !@testing
       tree = Dir.glob("*", File::FNM_DOTMATCH).select {|d| not ['.','..'].include? d }
@@ -118,12 +118,12 @@ class GitNuke
   end
 end
 
-GitNuke::Help = <<-HELP
-#{'git nuke'.red}: a git repo restoring tool
+GitReclone::Help = <<-HELP
+#{'git reclone'.red}: a git repo restoring tool
 
 reclones from the remote listed first, overwriting your local copy.
 to restore from a particular remote repository, specify the host:
 
-    git nuke bitbucket # reclone using bitbucket
-    git nuke github # reclone using github
+    git reclone bitbucket # reclone using bitbucket
+    git reclone github # reclone using github
 HELP

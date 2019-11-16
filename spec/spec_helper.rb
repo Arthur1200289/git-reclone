@@ -1,9 +1,9 @@
-require "git-nuke"
+require "git-reclone"
 require 'fileutils'
 
 # mock remotes/puts
 
-class GitNuke
+class GitReclone
   def exit(x) end
   def slowp(*x) end
   def printf(*x) end

@@ -1,8 +1,0 @@
-#!/usr/bin/env ruby
-
-require "git-nuke"
-
-# git-nuke by jeremy warner
-# easily reset git repo from remotes
-
-GitNuke.new.fire ARGV
