@@ -2,10 +2,9 @@ git-reclone :rocket:
 =================
 
 
-[![MIT](https://img.shields.io/npm/l/alt.svg?style=flat)](http://jeremywrnr.com/mit-license)
 [![Gem Version](https://badge.fury.io/rb/git-reclone.svg)](https://badge.fury.io/rb/git-reclone)
 [![Build Status](https://travis-ci.org/jeremywrnr/git-reclone.svg?branch=master)](https://travis-ci.org/jeremywrnr/git-reclone)
-
+[![MIT](https://img.shields.io/npm/l/alt.svg?style=flat)](http://jeremywrnr.com/mit-license)
 
 destroy your local copy of a git repo, and reclone it from your remote.
 
